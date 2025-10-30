@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RcadePlayhu - Free DIY Arcade Cabinet Blueprints & Resources</title>
+  <meta name="description" content="Free downloadable SVG cut-files, step-by-step photo guides, RGB LED wiring diagrams, and legal sound packs for building authentic retro arcade cabinets with household tools.">
+  <meta name="keywords" content="DIY arcade cabinet, free arcade blueprints, SVG cut files, retro arcade, Pac-Man cabinet, RGB LED wiring, arcade sound packs, maker community">
+  <meta name="author" content="arcadepleyhu">
+
+  <link rel="canonical" href="https://arcadepleyhu.online/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arcadepleyhu.online/">
+  <meta property="og:title" content="RcadePlayhu - Free DIY Arcade Cabinet Blueprints">
+  <meta property="og:description" content="Build authentic retro arcade cabinets with free SVG files, photo guides, wiring diagrams, and sound packs. Join our global maker community.">
+  <meta property="og:image" content="https://arcadepleyhu.online/og-image.jpg">
+  <meta property="og:site_name" content="arcadepleyhu">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@arcadepleyhu">
+  <meta name="twitter:title" content="RcadePlayhu - Free DIY Arcade Cabinet Blueprints">
+  <meta name="twitter:description" content="Build authentic retro arcade cabinets with free SVG files, photo guides, wiring diagrams, and sound packs.">
+  <meta name="twitter:image" content="https://arcadepleyhu.online/og-image.jpg">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://arcadepleyhu.online/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://arcadepleyhu.online/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="https://arcadepleyhu.online/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://arcadepleyhu.online/#website",
+        "url": "https://arcadepleyhu.online/",
+        "name": "arcadepleyhu - Free DIY Arcade Cabinet Blueprints",
+        "description": "Free resources for building retro arcade cabinets",
+        "publisher": {
+          "@id": "https://arcadepleyhu.online/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://arcadepleyhu.online/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://arcadepleyhu.online/#organization",
+        "name": "arcadepleyhu",
+        "url": "https://arcadepleyhu.online/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arcadepleyhu.online/logo.png"
+        },
+        "sameAs": [
+          "https://twitter.com/arcadepleyhu",
+          "https://discord.gg/arcadepleyhu",
+          "https://linkedin.com/company/arcadepleyhu"
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://arcadepleyhu.online/#webapp",
+        "name": "RcadePlayhu Resource Library",
+        "url": "https://arcadepleyhu.online/",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All",
+        "screenshot": "https://arcadepleyhu.online/screenshot.png",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://arcadepleyhu.online/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://arcadepleyhu.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Resources",
+            "item": "https://arcadepleyhu.online/#resources"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Build Guide",
+            "item": "https://arcadepleyhu.online/#build-journey"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Gallery",
+            "item": "https://arcadepleyhu.online/#gallery"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav" id="main-nav">
+    <div class="nav__container">
+      <a href="https://arcadepleyhu.online/" class="nav__logo">
+        <svg class="nav__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="28" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="6" y="8" width="20" height="14" fill="currentColor" opacity="0.2"/>
+          <circle cx="9" cy="25" r="2" fill="currentColor"/>
+          <circle cx="23" cy="25" r="2" fill="currentColor"/>
+          <path d="M12 15L14 13L16 15L14 17L12 15Z" fill="currentColor"/>
+          <circle cx="20" cy="13" r="1.5" fill="currentColor"/>
+          <circle cx="20" cy="17" r="1.5" fill="currentColor"/>
+        </svg>
+        <span class="nav__logo-text">arcadepleyhu</span>
+      </a>
+
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+      </button>
+
+      <ul class="nav__menu">
+        <li><a href="#resources" class="nav__link">Resources</a></li>
+        <li><a href="#build-journey" class="nav__link">Build Guide</a></li>
+        <li><a href="#gallery" class="nav__link">Gallery</a></li>
+        <li><a href="#mission" class="nav__link">Mission</a></li>
+        <li><a href="#get-started" class="nav__link nav__link--cta">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="scanlines"></div>
+  <div class="crt-glow"></div>
+
+  <section class="hero" id="hero">
+    <div class="hero__container">
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="hero__badge-icon">🎮</span>
+          <span class="hero__badge-text">100% Free Forever</span>
+        </div>
+
+        <h1 class="hero__title">
+          Build Your Own
+          <span class="hero__title-highlight">Retro Arcade Cabinet</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Free downloadable SVG cut-files, step-by-step photo guides, RGB LED wiring diagrams, and legal sound packs. Everything you need to build an authentic Pac-Man scale cabinet with household tools and recycled monitors.
+        </p>
+
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <div class="hero__stat-value" data-counter="12847">0</div>
+            <div class="hero__stat-label">Downloads</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-value" data-counter="3204">0</div>
+            <div class="hero__stat-label">Makers</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-value" data-counter="89">0</div>
+            <div class="hero__stat-label">Countries</div>
+          </div>
+        </div>
+
+        <div class="hero__cta">
+          <a href="#get-started" class="btn btn--primary btn--large">
+            <span class="btn__text">Download Free Pack</span>
+            <svg class="btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3V13M10 13L6 9M10 13L14 9M4 17H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#build-journey" class="btn btn--secondary btn--large">
+            <span class="btn__text">See How It Works</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="arcade-cabinet">
+          <svg class="arcade-cabinet__svg" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cabinetGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.8" />
+                <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:0.6" />
+                <stop offset="100%" style="stop-color:#ffff00;stop-opacity:0.8" />
+              </linearGradient>
+            </defs>
+            <path d="M80 20 L220 20 L240 80 L240 360 L60 360 L60 80 Z" fill="#1a1a1a" stroke="url(#cabinetGlow)" stroke-width="3"/>
+            <rect x="80" y="40" width="140" height="100" rx="4" fill="#0a0a0a" stroke="#00ffff" stroke-width="2"/>
+            <rect x="90" y="50" width="120" height="80" fill="#00ff41" opacity="0.3"/>
+            <line x1="90" y1="60" x2="210" y2="60" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
+            <line x1="90" y1="70" x2="210" y2="70" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
+            <line x1="90" y1="80" x2="210" y2="80" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
+            <rect x="70" y="160" width="160" height="140" rx="8" fill="#2a2a2a" stroke="#ff00ff" stroke-width="2"/>
+            <circle cx="100" cy="220" r="20" fill="#1a1a1a" stroke="#00ffff" stroke-width="2"/>
+            <circle cx="100" cy="270" r="20" fill="#1a1a1a" stroke="#00ffff" stroke-width="2"/>
+            <circle cx="130" cy="245" r="20" fill="#1a1a1a" stroke="#00ffff" stroke-width="2"/>
+            <circle cx="70" cy="245" r="20" fill="#1a1a1a" stroke="#00ffff" stroke-width="2"/>
+            <circle cx="190" cy="210" r="18" fill="#ff00ff" opacity="0.8"/>
+            <circle cx="190" cy="250" r="18" fill="#ffff00" opacity="0.8"/>
+            <circle cx="190" cy="290" r="18" fill="#00ffff" opacity="0.8"/>
+            <rect x="70" y="320" width="160" height="30" rx="4" fill="#1a1a1a" stroke="#ffff00" stroke-width="2"/>
+            <text x="150" y="340" text-anchor="middle" fill="#ffff00" font-size="12" font-family="monospace">INSERT COIN</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="resources" id="resources">
+    <div class="resources__container">
+      <div class="resources__header">
+        <h2 class="resources__title">Everything You Need to Build</h2>
+        <p class="resources__subtitle">Professional-grade resources, completely free. No signup walls, no hidden costs.</p>
+      </div>
+
+      <div class="resources__grid">
+        <article class="resource-card">
+          <div class="resource-card__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="12" width="32" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 20L20 24L16 28M24 28H32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="resource-card__title">SVG Cut Files</h3>
+          <p class="resource-card__description">
+            Precision blueprints for every panel at exact Pac-Man cabinet scale. Compatible with CNC routers, laser cutters, or print-and-trace for hand tools. Includes full measurements and joint guides.
+          </p>
+          <ul class="resource-card__features">
+            <li>✓ Full cabinet (7 panels)</li>
+            <li>✓ Control panel templates</li>
+            <li>✓ Marquee cutouts</li>
+          </ul>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">SVG • DXF • PDF</span>
+          </div>
+        </article>
+
+        <article class="resource-card">
+          <div class="resource-card__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="8" width="28" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
+              <rect x="14" y="12" width="20" height="14" fill="currentColor" opacity="0.2"/>
+              <line x1="14" y1="30" x2="26" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="14" y1="34" x2="22" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="resource-card__title">Photo Build Guides</h3>
+          <p class="resource-card__description">
+            Step-by-step visual instructions using only tools you already own. Shot in real workshops with actual recycled monitors. No jargon, no expensive equipment.
+          </p>
+          <ul class="resource-card__features">
+            <li>✓ 250+ annotated photos</li>
+            <li>✓ Troubleshooting tips</li>
+            <li>✓ Material alternatives</li>
+          </ul>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF • 18MB</span>
+          </div>
+        </article>
+
+        <article class="resource-card">
+          <div class="resource-card__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 8V24L32 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="24" cy="24" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 class="resource-card__title">RGB LED Wiring</h3>
+          <p class="resource-card__description">
+            Detailed diagrams for authentic arcade glow. Includes Arduino code snippets for color-cycling effects and safe power calculations. Pre-tested layouts for common strip types.
+          </p>
+          <ul class="resource-card__features">
+            <li>✓ Wiring schematics</li>
+            <li>✓ Color-cycle code</li>
+            <li>✓ Power supply guide</li>
+          </ul>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF • Arduino Sketch</span>
+          </div>
+        </article>
+
+        <article class="resource-card">
+          <div class="resource-card__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 18C12 18 16 10 24 10C32 10 36 18 36 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 18V34C12 36 14 38 16 38H32C34 38 36 36 36 34V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="20" cy="26" r="2" fill="currentColor"/>
+              <circle cx="28" cy="26" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 class="resource-card__title">Sound Font Packs</h3>
+          <p class="resource-card__description">
+            Legally-cleared audio files that capture that classic coin-op atmosphere. Includes startup chimes, coin-drop sounds, and button clicks. Ready for Raspberry Pi or PC builds.
+          </p>
+          <ul class="resource-card__features">
+            <li>✓ 24 authentic sounds</li>
+            <li>✓ Multiple formats</li>
+            <li>✓ Attribution-free</li>
+          </ul>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">WAV • MP3 • OGG</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="build-journey" id="build-journey">
+    <div class="build-journey__container">
+      <div class="build-journey__header">
+        <h2 class="build-journey__title">Your Build Journey</h2>
+        <p class="build-journey__subtitle">From blueprint to button-mashing in three weekends</p>
+      </div>
+
+      <div class="build-journey__timeline">
+        <article class="journey-step">
+          <div class="journey-step__number">01</div>
+          <div class="journey-step__content">
+            <h3 class="journey-step__title">Cut & Assemble</h3>
+            <p class="journey-step__description">
+              Download the SVG files and cut your panels from 3/4" plywood. Use a jigsaw, circular saw, or take the files to a local makerspace. Our guides show three different cutting methods. Sand, join with wood glue and screws. No fancy joinery required.
+            </p>
+            <div class="journey-step__tools">
+              <span class="journey-step__tool">Jigsaw</span>
+              <span class="journey-step__tool">Drill</span>
+              <span class="journey-step__tool">Sandpaper</span>
+              <span class="journey-step__tool">Wood Glue</span>
+            </div>
+            <div class="journey-step__time">Weekend 1 • 8-12 hours</div>
+          </div>
+        </article>
+
+        <article class="journey-step">
+          <div class="journey-step__number">02</div>
+          <div class="journey-step__content">
+            <h3 class="journey-step__title">Wire & Light</h3>
+            <p class="journey-step__description">
+              Mount your recycled monitor and install the control panel. Follow our color-coded wiring diagrams to add RGB LED strips for that authentic arcade glow. Upload the included Arduino sketch for automatic color cycling. Test all buttons and connections.
+            </p>
+            <div class="journey-step__tools">
+              <span class="journey-step__tool">Soldering Iron</span>
+              <span class="journey-step__tool">Wire Strippers</span>
+              <span class="journey-step__tool">Multimeter</span>
+              <span class="journey-step__tool">Arduino Board</span>
+            </div>
+            <div class="journey-step__time">Weekend 2 • 6-10 hours</div>
+          </div>
+        </article>
+
+        <article class="journey-step">
+          <div class="journey-step__number">03</div>
+          <div class="journey-step__content">
+            <h3 class="journey-step__title">Paint & Play</h3>
+            <p class="journey-step__description">
+              Apply your choice of paint or vinyl wrap. Install the sound system using our audio pack for authentic coin-op chimes. Load your favorite retro games via RetroPie or MAME. Power up, drop a virtual coin, and invite friends over. Share your build in our gallery.
+            </p>
+            <div class="journey-step__tools">
+              <span class="journey-step__tool">Spray Paint</span>
+              <span class="journey-step__tool">Speakers</span>
+              <span class="journey-step__tool">Raspberry Pi</span>
+              <span class="journey-step__tool">USB Encoder</span>
+            </div>
+            <div class="journey-step__time">Weekend 3 • 4-8 hours</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="gallery__container">
+      <div class="gallery__header">
+        <h2 class="gallery__title">Maker Gallery</h2>
+        <p class="gallery__subtitle">Real builds from our global community. Vote for your favorite to crown this month's champion.</p>
+      </div>
+
+      <div class="gallery__filters">
+        <button class="gallery__filter gallery__filter--active" data-filter="all">All Builds</button>
+        <button class="gallery__filter" data-filter="classic">Classic Style</button>
+        <button class="gallery__filter" data-filter="modern">Modern Twist</button>
+        <button class="gallery__filter" data-filter="mini">Mini Cabinets</button>
+      </div>
+
+      <div class="gallery__grid">
+        <article class="gallery-item" data-category="classic">
+          <div class="gallery-item__image">
+            <div class="gallery-item__placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="8" width="40" height="48" rx="2" stroke="white" stroke-width="2" opacity="0.6"/>
+                <rect x="18" y="14" width="28" height="20" fill="white" opacity="0.3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">Tokyo Nights Cabinet</h3>
+            <p class="gallery-item__maker">by @maker_toshi</p>
+            <p class="gallery-item__description">Classic Pac-Man yellow with custom neon underglow. Recycled 19" CRT from a thrift store.</p>
+            <div class="gallery-item__footer">
+              <button class="gallery-item__vote" data-votes="247">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 2L10 6H14L11 9L12 13L8 10L4 13L5 9L2 6H6L8 2Z" fill="currentColor"/>
+                </svg>
+                <span class="gallery-item__vote-count">247</span>
+              </button>
+              <span class="gallery-item__location">🇯🇵 Tokyo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="gallery-item" data-category="modern">
+          <div class="gallery-item__image">
+            <div class="gallery-item__placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="8" width="40" height="48" rx="2" stroke="white" stroke-width="2" opacity="0.6"/>
+                <rect x="18" y="14" width="28" height="20" fill="white" opacity="0.3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">Cyberpunk Arcade</h3>
+            <p class="gallery-item__maker">by @neon_builder</p>
+            <p class="gallery-item__description">Hot pink and cyan theme with reactive LED strips that pulse with game audio.</p>
+            <div class="gallery-item__footer">
+              <button class="gallery-item__vote" data-votes="312">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 2L10 6H14L11 9L12 13L8 10L4 13L5 9L2 6H6L8 2Z" fill="currentColor"/>
+                </svg>
+                <span class="gallery-item__vote-count">312</span>
+              </button>
+              <span class="gallery-item__location">🇺🇸 Portland</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="gallery-item" data-category="classic">
+          <div class="gallery-item__image">
+            <div class="gallery-item__placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="8" width="40" height="48" rx="2" stroke="white" stroke-width="2" opacity="0.6"/>
+                <rect x="18" y="14" width="28" height="20" fill="white" opacity="0.3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">The Blue Bomber</h3>
+            <p class="gallery-item__maker">by @retro_sarah</p>
+            <p class="gallery-item__description">Authentic 1980s arcade blue. Built entirely with hand tools in a tiny apartment.</p>
+            <div class="gallery-item__footer">
+              <button class="gallery-item__vote" data-votes="189">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 2L10 6H14L11 9L12 13L8 10L4 13L5 9L2 6H6L8 2Z" fill="currentColor"/>
+                </svg>
+                <span class="gallery-item__vote-count">189</span>
+              </button>
+              <span class="gallery-item__location">🇬🇧 London</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="gallery-item" data-category="mini">
+          <div class="gallery-item__image">
+            <div class="gallery-item__placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="8" width="40" height="48" rx="2" stroke="white" stroke-width="2" opacity="0.6"/>
+                <rect x="18" y="14" width="28" height="20" fill="white" opacity="0.3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">Desk Buddy Mini</h3>
+            <p class="gallery-item__maker">by @mini_maker</p>
+            <p class="gallery-item__description">50% scale version perfect for desktops. Uses a 10" tablet as the display.</p>
+            <div class="gallery-item__footer">
+              <button class="gallery-item__vote" data-votes="421">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 2L10 6H14L11 9L12 13L8 10L4 13L5 9L2 6H6L8 2Z" fill="currentColor"/>
+                </svg>
+                <span class="gallery-item__vote-count">421</span>
+              </button>
+              <span class="gallery-item__location">🇨🇦 Toronto</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="gallery-item" data-category="modern">
+          <div class="gallery-item__image">
+            <div class="gallery-item__placeholder" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="8" width="40" height="48" rx="2" stroke="white" stroke-width="2" opacity="0.6"/>
+                <rect x="18" y="14" width="28" height="20" fill="white" opacity="0.3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">Pastel Dream Machine</h3>
+            <p class="gallery-item__maker">by @kawaii_arcade</p>
+            <p class="gallery-item__description">Soft pastels with holographic vinyl accents. Instagram sensation with 50K likes.</p>
+            <div class="gallery-item__footer">
+              <button class="gallery-item__vote" data-votes="534">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 2L10 6H14L11 9L12 13L8 10L4 13L5 9L2 6H6L8 2Z" fill="currentColor"/>
+                </svg>
+                <span class="gallery-item__vote-count">534</span>
+              </button>
+              <span class="gallery-item__location">🇰🇷 Seoul</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="gallery-item" data-category="classic">
+          <div class="gallery-item__image">
+            <div class="gallery-item__placeholder" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="8" width="40" height="48" rx="2" stroke="white" stroke-width="2" opacity="0.6"/>
+                <rect x="18" y="14" width="28" height="20" fill="white" opacity="0.3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">Woodgrain Wonder</h3>
+            <p class="gallery-item__maker">by @rustic_gamer</p>
+            <p class="gallery-item__description">Natural wood finish with brass accents. Blends perfectly into a home library.</p>
+            <div class="gallery-item__footer">
+              <button class="gallery-item__vote" data-votes="276">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 2L10 6H14L11 9L12 13L8 10L4 13L5 9L2 6H6L8 2Z" fill="currentColor"/>
+                </svg>
+                <span class="gallery-item__vote-count">276</span>
+              </button>
+              <span class="gallery-item__location">🇦🇺 Melbourne</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="gallery__cta">
+        <p class="gallery__cta-text">Built your own cabinet?</p>
+        <a href="https://discord.gg/arcadepleyhu" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+          <span class="btn__text">Submit to Gallery</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission" id="mission">
+    <div class="mission__container">
+      <div class="mission__content">
+        <div class="mission__badge">Why Free?</div>
+        <h2 class="mission__title">Built by Makers, for Makers</h2>
+        <div class="mission__story">
+          <p>
+            Ten years ago, I spent three months hunting down arcade cabinet plans. Every website wanted $50 for incomplete PDFs. Some were literal scans of 1980s manuals you couldn't even read. Others were "premium communities" that gatekept basic dimensions behind paywalls.
+          </p>
+          <p>
+            When I finally built my first cabinet, I measured everything, documented every cut, and photographed every mistake. That knowledge shouldn't cost money. The golden age of arcades was about communities gathering around machines, not about corporations extracting profit from nostalgia.
+          </p>
+          <p>
+            RcadePlayhu exists because arcade culture should be accessible to anyone with a weekend, some plywood, and the desire to build something with their hands. Every download, every shared build, every troubleshooting tip in our Discord is a middle finger to paywalls and a love letter to the maker spirit.
+          </p>
+          <p>
+            We're also doing our small part for the planet. Those old CRT monitors in your garage? They don't belong in landfills. They belong in a cabinet, glowing green with Pac-Man mazes, giving someone the same rush you felt dropping quarters in 1982.
+          </p>
+        </div>
+        <div class="mission__signature">
+          <p class="mission__signature-text">— Alex Chen, Founder</p>
+          <p class="mission__signature-meta">Portland, OR • Built 47 cabinets and counting</p>
+        </div>
+      </div>
+
+      <div class="mission__stats">
+        <div class="mission__stat-card">
+          <div class="mission__stat-icon">♻️</div>
+          <div class="mission__stat-value" data-counter="2847">0</div>
+          <div class="mission__stat-label">Monitors Saved from Landfills</div>
+        </div>
+
+        <div class="mission__stat-card">
+          <div class="mission__stat-icon">🌍</div>
+          <div class="mission__stat-value" data-counter="89">0</div>
+          <div class="mission__stat-label">Countries Building</div>
+        </div>
+
+        <div class="mission__stat-card">
+          <div class="mission__stat-icon">💬</div>
+          <div class="mission__stat-value" data-counter="15420">0</div>
+          <div class="mission__stat-label">Discord Members</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="get-started">
+    <div class="cta-section__container">
+      <div class="cta-section__content">
+        <h2 class="cta-section__title">Ready to Build Your Cabinet?</h2>
+        <p class="cta-section__subtitle">
+          Get instant access to all our resources. No signup required, no credit card, no catch. Just pure maker goodness.
+        </p>
+
+        <form class="cta-form" id="signup-form">
+          <div class="cta-form__field">
+            <label for="email" class="cta-form__label">Email Address (Optional)</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="cta-form__input"
+              placeholder="you@example.com"
+              autocomplete="email"
+            >
+            <p class="cta-form__hint">We'll send you our monthly maker spotlight and new resource alerts. Unsubscribe anytime.</p>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--large btn--full">
+            <span class="btn__text">Download Complete Starter Pack</span>
+            <svg class="btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3V13M10 13L6 9M10 13L14 9M4 17H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+
+        <div class="cta-section__pack-contents">
+          <p class="cta-section__pack-title">Starter Pack Includes:</p>
+          <ul class="cta-section__pack-list">
+            <li>✓ Complete SVG cut files (7 panels)</li>
+            <li>✓ 250+ photo build guide</li>
+            <li>✓ RGB LED wiring diagrams + Arduino code</li>
+            <li>✓ 24 legal sound effects</li>
+            <li>✓ Bonus: Tool shopping checklist</li>
+            <li>✓ Bonus: Material cost calculator</li>
+          </ul>
+        </div>
+
+        <div class="cta-section__community">
+          <p class="cta-section__community-text">Join 15,000+ makers in our Discord</p>
+          <a href="https://discord.gg/arcadepleyhu" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">
+            <svg class="btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.5 3.5C15.3 3 14 2.6 12.6 2.4C12.4 2.7 12.2 3.1 12.1 3.4C10.6 3.2 9.1 3.2 7.6 3.4C7.5 3.1 7.3 2.7 7.1 2.4C5.7 2.6 4.4 3 3.2 3.5C0.5 7.5 -0.3 11.4 0.1 15.2C1.8 16.5 3.5 17.3 5.1 17.8C5.5 17.3 5.9 16.7 6.2 16.1C5.7 15.9 5.2 15.7 4.7 15.4C4.8 15.3 4.9 15.2 5 15.1C8.3 16.6 11.9 16.6 15.2 15.1C15.3 15.2 15.4 15.3 15.5 15.4C15 15.7 14.5 15.9 14 16.1C14.3 16.7 14.7 17.3 15.1 17.8C16.7 17.3 18.4 16.5 20.1 15.2C20.6 10.8 19.3 6.9 16.5 3.5ZM6.7 12.8C5.7 12.8 4.9 11.9 4.9 10.8C4.9 9.7 5.7 8.8 6.7 8.8C7.7 8.8 8.5 9.7 8.5 10.8C8.5 11.9 7.7 12.8 6.7 12.8ZM13.5 12.8C12.5 12.8 11.7 11.9 11.7 10.8C11.7 9.7 12.5 8.8 13.5 8.8C14.5 8.8 15.3 9.7 15.3 10.8C15.3 11.9 14.5 12.8 13.5 12.8Z" fill="currentColor"/>
+            </svg>
+            <span class="btn__text">Join Discord Community</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="https://arcadepleyhu.online/" class="footer__logo">
+            <svg class="footer__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="28" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+              <rect x="6" y="8" width="20" height="14" fill="currentColor" opacity="0.2"/>
+              <circle cx="9" cy="25" r="2" fill="currentColor"/>
+              <circle cx="23" cy="25" r="2" fill="currentColor"/>
+              <path d="M12 15L14 13L16 15L14 17L12 15Z" fill="currentColor"/>
+              <circle cx="20" cy="13" r="1.5" fill="currentColor"/>
+              <circle cx="20" cy="17" r="1.5" fill="currentColor"/>
+            </svg>
+            <span class="footer__logo-text">arcadepleyhu</span>
+          </a>
+          <p class="footer__tagline">Free resources for the arcade builder community</p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__column">
+            <h3 class="footer__column-title">Resources</h3>
+            <ul class="footer__list">
+              <li><a href="#resources" class="footer__link">SVG Cut Files</a></li>
+              <li><a href="#resources" class="footer__link">Build Guides</a></li>
+              <li><a href="#resources" class="footer__link">Wiring Diagrams</a></li>
+              <li><a href="#resources" class="footer__link">Sound Packs</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h3 class="footer__column-title">Community</h3>
+            <ul class="footer__list">
+              <li><a href="#gallery" class="footer__link">Maker Gallery</a></li>
+              <li><a href="https://discord.gg/arcadepleyhu" class="footer__link" target="_blank" rel="noopener noreferrer">Discord Server</a></li>
+              <li><a href="#build-journey" class="footer__link">Build Journey</a></li>
+              <li><a href="#get-started" class="footer__link">Get Started</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h3 class="footer__column-title">About</h3>
+            <ul class="footer__list">
+              <li><a href="#mission" class="footer__link">Our Mission</a></li>
+              <li><a href="mailto:hello@arcadepleyhu.online" class="footer__link">Contact Us</a></li>
+              <li><a href="mailto:support@arcadepleyhu.online" class="footer__link">Support</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h3 class="footer__column-title">Legal</h3>
+            <ul class="footer__list">
+              <li><a href="mailto:privacy@arcadepleyhu.online" class="footer__link">Privacy Policy</a></li>
+              <li><a href="mailto:legal@arcadepleyhu.online" class="footer__link">Terms of Use</a></li>
+              <li><a href="mailto:legal@arcadepleyhu.online" class="footer__link">Licensing</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__social">
+          <a href="https://twitter.com/arcadepleyhu" class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.8 4.4C15.2 4.7 14.5 4.9 13.8 5C14.5 4.6 15.1 3.9 15.3 3.1C14.6 3.5 13.9 3.7 13.1 3.9C12.5 3.2 11.6 2.8 10.6 2.8C8.8 2.8 7.3 4.3 7.3 6.1C7.3 6.4 7.3 6.6 7.4 6.8C4.9 6.7 2.7 5.4 1.3 3.4C1 3.9 0.8 4.6 0.8 5.3C0.8 6.6 1.5 7.7 2.5 8.4C1.9 8.4 1.3 8.2 0.8 7.9V8C0.8 9.5 1.9 10.8 3.4 11.1C3.1 11.2 2.8 11.2 2.5 11.2C2.3 11.2 2.1 11.2 1.9 11.1C2.3 12.4 3.5 13.3 4.9 13.3C3.8 14.2 2.4 14.7 0.9 14.7C0.6 14.7 0.3 14.7 0 14.6C1.4 15.6 3.1 16.2 4.9 16.2C10.6 16.2 13.7 11.2 13.7 6.5V6C14.4 5.5 15.1 5 15.8 4.4Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://discord.gg/arcadepleyhu" class="footer__social-link" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.5 3.5C15.3 3 14 2.6 12.6 2.4C12.4 2.7 12.2 3.1 12.1 3.4C10.6 3.2 9.1 3.2 7.6 3.4C7.5 3.1 7.3 2.7 7.1 2.4C5.7 2.6 4.4 3 3.2 3.5C0.5 7.5 -0.3 11.4 0.1 15.2C1.8 16.5 3.5 17.3 5.1 17.8C5.5 17.3 5.9 16.7 6.2 16.1C5.7 15.9 5.2 15.7 4.7 15.4C4.8 15.3 4.9 15.2 5 15.1C8.3 16.6 11.9 16.6 15.2 15.1C15.3 15.2 15.4 15.3 15.5 15.4C15 15.7 14.5 15.9 14 16.1C14.3 16.7 14.7 17.3 15.1 17.8C16.7 17.3 18.4 16.5 20.1 15.2C20.6 10.8 19.3 6.9 16.5 3.5ZM6.7 12.8C5.7 12.8 4.9 11.9 4.9 10.8C4.9 9.7 5.7 8.8 6.7 8.8C7.7 8.8 8.5 9.7 8.5 10.8C8.5 11.9 7.7 12.8 6.7 12.8ZM13.5 12.8C12.5 12.8 11.7 11.9 11.7 10.8C11.7 9.7 12.5 8.8 13.5 8.8C14.5 8.8 15.3 9.7 15.3 10.8C15.3 11.9 14.5 12.8 13.5 12.8Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/company/arcadepleyhu" class="footer__social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.5 2.5C4.5 3.3 3.8 4 3 4C2.2 4 1.5 3.3 1.5 2.5C1.5 1.7 2.2 1 3 1C3.8 1 4.5 1.7 4.5 2.5ZM4.5 5.5H1.5V18.5H4.5V5.5ZM11 5.5H8V18.5H11V11.5C11 8.7 14.5 8.5 14.5 11.5V18.5H17.5V10.3C17.5 5.4 12 5.6 11 7.8V5.5Z" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="footer__copyright">
+          <p>© 2025 <a href="https://arcadepleyhu.online/" class="footer__copyright-link">arcadepleyhu.online</a> — All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
